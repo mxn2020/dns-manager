@@ -1,0 +1,180 @@
+/* DNS Manager — Network Amber & Cloud White */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap');
+
+:root,
+[data-theme="light"] {
+  --color-bg-primary: #FAFAF9;
+  --color-bg-secondary: #F5F5F4;
+  --color-bg-tertiary: #E7E5E4;
+  --color-bg-card: #FFFFFF;
+  --color-bg-hover: rgba(245, 158, 11, 0.06);
+  --color-text-primary: #1C1917;
+  --color-text-secondary: #57534E;
+  --color-text-tertiary: #A8A29E;
+  --color-text-inverse: #FFFFFF;
+  --color-accent-primary: #D97706;
+  --color-accent-secondary: #F59E0B;
+  --color-accent-tertiary: #B45309;
+  --color-accent-soft: rgba(217, 119, 6, 0.1);
+  --color-success: #15803D;
+  --color-danger: #DC2626;
+  --color-border: #E7E5E4;
+  --color-border-strong: #D6D3D1;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="dark"] {
+  --color-bg-primary: #1C1917;
+  --color-bg-secondary: #292524;
+  --color-bg-tertiary: #3C3836;
+  --color-bg-card: #292524;
+  --color-bg-hover: rgba(245, 158, 11, 0.1);
+  --color-text-primary: #FAFAF9;
+  --color-text-secondary: #D6D3D1;
+  --color-text-tertiary: #A8A29E;
+  --color-text-inverse: #FFFFFF;
+  --color-accent-primary: #F59E0B;
+  --color-accent-secondary: #FBB024;
+  --color-accent-tertiary: #D97706;
+  --color-accent-soft: rgba(245, 158, 11, 0.15);
+  --color-success: #4ADE80;
+  --color-danger: #F87171;
+  --color-border: rgba(250, 250, 249, 0.1);
+  --color-border-strong: rgba(250, 250, 249, 0.2);
+  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+:root {
+  --font-family: 'Inter', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --transition-fast: 0.15s ease;
+  --sidebar-width: 240px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+.card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--card-shadow);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+  font-size: var(--font-size-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-card);
+  color: var(--color-text-primary);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--color-bg-secondary);
+  border-color: var(--color-border-strong);
+}
+
+.btn-primary {
+  background: var(--color-accent-primary);
+  color: var(--color-text-inverse);
+  border-color: var(--color-accent-primary);
+}
+
+.btn-primary:hover {
+  background: var(--color-accent-secondary);
+  border-color: var(--color-accent-secondary);
+}
+
+.btn-ghost {
+  background: transparent;
+  border: none;
+}
+
+.btn-ghost:hover {
+  background: var(--color-bg-secondary);
+  border-color: transparent;
+}
+
+.btn-sm {
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--font-size-xs);
+}
+
+.input {
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-card);
+  color: var(--color-text-primary);
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  transition: border-color var(--transition-fast);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-accent-primary);
+}
+
+.record-type {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  min-width: 40px;
+  text-align: center;
+}
