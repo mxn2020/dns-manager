@@ -1,33 +1,36 @@
-import { Globe, Plus, Shield, CheckCircle } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Globe, Plus, ExternalLink } from "lucide-react";
+import { Button, Card, Badge } from "@geenius-ui/react-css";
+
 const domains = [
-    { id: "1", name: "openclaw.dev", provider: "Cloudflare", records: 12, verified: true, updated: "10 min ago" },
-    { id: "2", name: "the-mehdi.com", provider: "Namecheap", records: 8, verified: true, updated: "2 hours ago" },
-    { id: "3", name: "minions.sh", provider: "Cloudflare", records: 6, verified: false, updated: "3 days ago" }
+    { id: "1", name: "openclaw.dev", status: "Active", records: 45, addedOn: "Oct 12, 2025" },
+    { id: "2", name: "api.openclaw.dev", status: "Active", records: 12, addedOn: "Nov 04, 2025" },
+    { id: "3", name: "app.openclaw.dev", status: "Active", records: 28, addedOn: "Nov 04, 2025" },
+    { id: "4", name: "claw-workspace.co", status: "Pending Verification", records: 0, addedOn: "2 days ago" }
 ];
+
 export default function DomainsPage() {
-    return (<div style={{ padding: "var(--space-6)", maxWidth: 1000 }}>
+    return (<div style={{ padding: "var(--space-8)", maxWidth: 1000 }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "var(--space-6)" }}>
-            <h1 style={{ fontSize: "var(--font-size-2xl)", fontWeight: 700, display: "flex", alignItems: "center", gap: "var(--space-2)" }}><Globe style={{ color: "var(--color-accent-primary)" }} /> My Domains</h1>
-            <button className="btn btn-primary"><Plus size={16} /> Add Domain</button>
+            <h1 style={{ fontSize: "var(--font-size-2xl)", fontWeight: 700, display: "flex", alignItems: "center", gap: "var(--space-2)" }}><Globe style={{ color: "var(--color-accent-primary)" }} /> Domains</h1>
+            <Button variant="primary" icon={<Plus size={16} />}>Add Domain</Button>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-3)" }}>
-            {domains.map(d => (
-                <div key={d.id} className="card" style={{ padding: "var(--space-5)", display: "flex", alignItems: "center", gap: "var(--space-5)" }}>
-                    <div style={{ flex: 1 }}>
-                        <Link to="/records" style={{ fontSize: "18px", fontWeight: 700, fontFamily: "var(--font-mono)", color: "var(--color-accent-primary)" }}>{d.name}</Link>
-                        <div style={{ display: "flex", gap: "var(--space-4)", marginTop: "var(--space-2)" }}>
-                            <span style={{ fontSize: "13px", color: "var(--color-text-secondary)" }}>{d.provider}</span>
-                            <span style={{ fontSize: "13px", color: "var(--color-text-secondary)" }}>{d.records} records</span>
-                            <span style={{ fontSize: "13px", color: "var(--color-text-secondary)" }}>Updated {d.updated}</span>
-                        </div>
+
+        <div style={{ display: "grid", gap: "var(--space-4)" }}>
+            {domains.map(d => (<Card key={d.id} padding="md" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", borderLeft: d.status === "Active" ? "3px solid var(--color-success)" : "3px solid var(--color-warning)" }}>
+                <div>
+                    <div style={{ display: "flex", alignItems: "center", gap: "var(--space-3)", marginBottom: 4 }}>
+                        <h3 style={{ fontSize: "var(--font-size-lg)", fontWeight: 700 }}>{d.name}</h3>
+                        <Badge variant={d.status === "Active" ? "success" : "warning"}>{d.status}</Badge>
                     </div>
-                    <div style={{ display: "flex", alignItems: "center", gap: "var(--space-2)" }}>
-                        {d.verified ? <><CheckCircle size={16} style={{ color: "var(--color-success)" }} /><span style={{ fontSize: "13px", color: "var(--color-success)", fontWeight: 500 }}>Verified</span></> : <><Shield size={16} style={{ color: "var(--color-danger)" }} /><span style={{ fontSize: "13px", color: "var(--color-danger)", fontWeight: 500 }}>Unverified</span></>}
+                    <div style={{ fontSize: "13px", color: "var(--color-text-secondary)" }}>
+                        {d.records} records • Added {d.addedOn}
                     </div>
-                    <Link to="/records" className="btn btn-sm">Manage Records</Link>
                 </div>
-            ))}
+                <div style={{ display: "flex", gap: "var(--space-2)" }}>
+                    <Button variant="outline" size="sm">Manage Records</Button>
+                    <Button variant="ghost" size="sm" icon={<ExternalLink size={16} />} />
+                </div>
+            </Card>))}
         </div>
     </div>);
 }
