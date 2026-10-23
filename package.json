@@ -46,7 +46,7 @@
   },
   "description": "DNS record management with real-time validation",
   "author": "Mehdi Nabhani",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "keywords": [
     "dns",
     "manager",
